@@ -1,6 +1,6 @@
-import {React,useState,useId} from "react";
+import React,{useState,useId} from "react";
 
-export function TodoForm() {
+export function TodoForm(props) {
     const [input, setinput] = useState(""); //used to set the value state of the input
     const id = useId(); //creates an id for individual inputs
 
@@ -8,14 +8,24 @@ export function TodoForm() {
         setinput(e.target.value)
     }
 
-    const addTodo = () => {
-
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        props.onSubmit({
+            id: id,
+            text: input
+        })
     }
     
     return (
-        <form>
-            <input id={id} type="text" placeholder="Add a Todo" value={input} onChange={createTodo}></input>
-            <button onSubmit={addTodo}>Submit</button>
+        <form onSubmit={handleSubmit}>
+            <input 
+                type="text" 
+                placeholder="Add a Todo" 
+                value={input} 
+                name="text"
+                onChange={createTodo}
+            />
+            <button>Submit</button>
         </form>
     )
 }

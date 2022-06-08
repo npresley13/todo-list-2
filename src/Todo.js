@@ -5,8 +5,7 @@ import { TodoForm } from './TodoForm';
 export function Todo() {
     return (
         <div>
-            <h1>This is a Todo List</h1>
-            <TodoForm />
+            
         </div>
-    )
+    )      
 }
