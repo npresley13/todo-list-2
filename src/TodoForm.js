@@ -1,10 +1,14 @@
 import React,{useState,useId} from "react";
 
 export function TodoForm(props) {
-    const [input, setinput] = useState(""); //used to set the value state of the input
-    const id = useId(); //creates an id for individual inputs
+    //used to set the value state of the input
+    const [input, setinput] = useState(""); 
+    
+    //creates an id for individual inputs
+    const id = useId(); 
 
-    const createTodo = (e) => {
+    //sets the "input" value to what is being typed in the input
+    const handleChange = (e) => {
         setinput(e.target.value)
     }
 
@@ -23,7 +27,7 @@ export function TodoForm(props) {
                 placeholder="Add a Todo" 
                 value={input} 
                 name="text"
-                onChange={createTodo}
+                onChange={handleChange}
             />
             <button>Submit</button>
         </form>
