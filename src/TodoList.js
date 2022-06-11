@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { TodoForm } from './TodoForm';
-
+import { Todo } from './Todo';
+ 
 export function TodoList() {
     const [todos, setTodos] = useState([]);
     
@@ -12,17 +13,14 @@ export function TodoList() {
         //updates todos array to include new todo
         const newTodos = [todo, ...todos]
         setTodos(newTodos);
+        console.log(newTodos);
     }
-    console.log(todos);
+
     return(
         <div>
             <h1>To Do List</h1>
             <TodoForm onSubmit={addTodo}/>
-            <div className="todo-row">
-                {todos.map(todo => (
-                    <div key={todo.text}>{todo.text}</div>
-                ))}
-            </div>
+            <Todo todos={todos}/>
         </div>
     )
 }

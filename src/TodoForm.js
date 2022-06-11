@@ -1,11 +1,9 @@
-import React,{useState,useId} from "react";
+import React,{useState} from "react";
+import { v4 as uuidv4 } from "uuid";
 
 export function TodoForm(props) {
     //used to set the value state of the input
     const [input, setinput] = useState(""); 
-    
-    //creates an id for individual inputs
-    const id = useId(); 
 
     //sets the "input" value to what is being typed in the input
     const handleChange = (e) => {
@@ -15,7 +13,7 @@ export function TodoForm(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
         props.onSubmit({
-            id: id,
+            id: uuidv4(),
             text: input
         })
     }
