@@ -16,10 +16,15 @@ export function TodoList() {
         console.log(newTodos);
     }
 
+    const resetList = (e) => {
+        e.preventDefault();
+        setTodos([]);
+    }
+
     return(
         <div>
             <h1>To Do List</h1>
-            <TodoForm onSubmit={addTodo}/>
+            <TodoForm onSubmit={addTodo} resetList={resetList}/>
             <Todo todos={todos}/>
         </div>
     )

@@ -27,7 +27,8 @@ export function TodoForm(props) {
                 name="text"
                 onChange={handleChange}
             />
-            <button>Submit</button>
+            <button type="submit">Submit</button>
+            <button type="button" onClick={props.resetList}>Reset</button>
         </form>
     )
 }

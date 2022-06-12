@@ -1,4 +1,17 @@
+#app {
+    width: fit-content;
+    margin: 0 auto;
+}
+
 .todo-row {
     display: flex;
     flex-direction: column;
+}
+
+.single-todo:nth-of-type(odd) {
+    background-color: aqua;
+}
+
+.single-todo:nth-of-type(even) {
+    background-color: greenyellow;
 }
