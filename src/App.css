@@ -8,10 +8,30 @@
     flex-direction: column;
 }
 
+.single-todo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .single-todo:nth-of-type(odd) {
     background-color: aqua;
 }
 
 .single-todo:nth-of-type(even) {
     background-color: greenyellow;
+}
+
+.edit-todos {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.edit-todo {
+    padding: 0 .5em;
+}
+
+.delete-todo {
+    padding: 0 .5em;
 }

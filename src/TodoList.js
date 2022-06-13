@@ -16,6 +16,13 @@ export function TodoList() {
         console.log(newTodos);
     }
 
+    const updateTodo = (todoId, newValue) => {
+        if(!newValue.text || /^\s*$/.test(newValue.text)) {
+            return;
+        }
+        setTodos(prev => prev.map(item => item.id === todoId ? newValue : item))
+    }
+
     const resetList = (e) => {
         e.preventDefault();
         setTodos([]);
@@ -25,7 +32,10 @@ export function TodoList() {
         <div>
             <h1>To Do List</h1>
             <TodoForm onSubmit={addTodo} resetList={resetList}/>
-            <Todo todos={todos}/>
+            <Todo 
+                todos={todos}
+                updateTodo={updateTodo}
+            />
         </div>
     )
 }
