@@ -13,7 +13,6 @@ export function TodoList() {
         //updates todos array to include new todo
         const newTodos = [todo, ...todos]
         setTodos(newTodos);
-        console.log(newTodos);
     }
 
     const updateTodo = (todoId, newValue) => {
