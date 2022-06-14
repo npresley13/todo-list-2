@@ -41,6 +41,7 @@ export function TodoList() {
                 updateTodo={updateTodo}
                 removeTodo={removeTodo}
             />
+            <h2>Completed Tasks</h2>
         </div>
     )
 }
