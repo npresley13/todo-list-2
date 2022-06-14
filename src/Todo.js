@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { TodoForm } from './TodoForm';
 
 //Main Todo App
-export function Todo(props, todos, updateTodo) {
+export function Todo({todos, updateTodo, removeTodo}) {
     const [edit, setEdit] = useState({
         id: null,
         value: ''
@@ -22,7 +22,7 @@ export function Todo(props, todos, updateTodo) {
 
     return (
         <div className="todo-row">
-            {props.todos.map(todo => (
+            {todos.map(todo => (
                 <div className="single-todo" key={todo.id}>
                     {todo.text}
                     <div className="edit-todos">
@@ -32,7 +32,9 @@ export function Todo(props, todos, updateTodo) {
                         >
                             +
                         </div>
-                        <div className="delete-todo">-</div>
+                        <div 
+                            className="delete-todo"
+                            onClick={() => removeTodo(todo.id)}>-</div>
                     </div>
                 </div>
             ))}

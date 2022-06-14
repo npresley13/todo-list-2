@@ -20,7 +20,12 @@ export function TodoList() {
         if(!newValue.text || /^\s*$/.test(newValue.text)) {
             return;
         }
-        setTodos(prev => prev.map(item => item.id === todoId ? newValue : item))
+        setTodos(prev => prev.map(item => (item.id === todoId ? newValue : item)));
+    }
+
+    const removeTodo = (id) => {
+        const removeArr = [...todos].filter(todo => todo.id !== id);
+        setTodos(removeArr);
     }
 
     const resetList = (e) => {
@@ -35,6 +40,7 @@ export function TodoList() {
             <Todo 
                 todos={todos}
                 updateTodo={updateTodo}
+                removeTodo={removeTodo}
             />
         </div>
     )
