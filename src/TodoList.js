@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
 import { TodoForm } from './TodoForm';
 import { Todo } from './Todo';
+import { TodoComplete } from './TodoComplete';
  
 export function TodoList() {
     const [todos, setTodos] = useState([]);
+    const [completedTodo, setCompletedTodo] = useState([]);
     
     const addTodo = todo => {
         //checks to make sure todo has text in it
@@ -27,6 +29,13 @@ export function TodoList() {
         setTodos(removeArr);
     }
 
+    const markTodoComplete = (id) => {
+        const remainingArr = [...todos].filter(todo => todo.id !== id);
+        const completeArr = [...todos].filter(todo => todo.id === id);
+        setTodos(remainingArr);
+        setCompletedTodo(completeArr);
+    }
+
     const resetList = (e) => {
         e.preventDefault();
         setTodos([]);
@@ -40,8 +49,10 @@ export function TodoList() {
                 todos={todos}
                 updateTodo={updateTodo}
                 removeTodo={removeTodo}
+                markTodoComplete={markTodoComplete}
             />
             <h2>Completed Tasks</h2>
+            <TodoComplete completedTodo={completedTodo} />
         </div>
     )
 }

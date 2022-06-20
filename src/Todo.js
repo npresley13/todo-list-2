@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { TodoForm } from './TodoForm';
 
 //Main Todo App
-export function Todo({todos, updateTodo, removeTodo}) {
+export function Todo({todos, updateTodo, removeTodo, markTodoComplete}) {
     const [edit, setEdit] = useState({
         id: null,
         value: ''
@@ -34,7 +34,16 @@ export function Todo({todos, updateTodo, removeTodo}) {
                         </div>
                         <div 
                             className="delete-todo"
-                            onClick={() => removeTodo(todo.id)}>-</div>
+                            onClick={() => removeTodo(todo.id)}
+                        >
+                            -
+                        </div>
+                        <div 
+                            className="complete-todo"
+                            onClick={() => markTodoComplete(todo.id)}
+                        >
+                            &#10003;
+                        </div>
                     </div>
                 </div>
             ))}
