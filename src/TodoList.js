@@ -31,7 +31,8 @@ export function TodoList() {
 
     const markTodoComplete = (id) => {
         const remainingArr = [...todos].filter(todo => todo.id !== id);
-        const completeArr = [...todos].filter(todo => todo.id === id);
+        const todoAddedToComplete = [...todos].filter(todo => todo.id === id);
+        const completeArr = [...completedTodo, ...todoAddedToComplete];
         setTodos(remainingArr);
         setCompletedTodo(completeArr);
     }
