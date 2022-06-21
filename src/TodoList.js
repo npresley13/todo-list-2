@@ -30,16 +30,28 @@ export function TodoList() {
     }
 
     const markTodoComplete = (id) => {
-        const remainingArr = [...todos].filter(todo => todo.id !== id);
-        const todoAddedToComplete = [...todos].filter(todo => todo.id === id);
-        const completeArr = [...completedTodo, ...todoAddedToComplete];
+        let remainingArr = [...todos].filter(todo => todo.id !== id);
+        let todoAddedToComplete = [...todos].filter(todo => todo.id === id);
+        let completeArr = [...completedTodo, ...todoAddedToComplete];
         setTodos(remainingArr);
         setCompletedTodo(completeArr);
+        completeArr = [];
+        remainingArr = [];
+        todoAddedToComplete = [];
+    }
+
+    const undoComplete = (id) => {
+        let undoTodo = [...completedTodo].filter(todo => todo.id === id);
+        const removeFromComplete = [...completedTodo].filter(todo => todo.id !== id);
+        setTodos([...todos, ...undoTodo]);
+        setCompletedTodo(removeFromComplete);
+        undoTodo = [];
     }
 
     const resetList = (e) => {
         e.preventDefault();
         setTodos([]);
+        setCompletedTodo([]);
     }
 
     return(
@@ -53,7 +65,10 @@ export function TodoList() {
                 markTodoComplete={markTodoComplete}
             />
             <h2>Completed Tasks</h2>
-            <TodoComplete completedTodo={completedTodo} />
+            <TodoComplete 
+                completedTodo={completedTodo}
+                undoComplete={undoComplete} 
+            />
         </div>
     )
 }
