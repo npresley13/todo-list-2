@@ -37,6 +37,6 @@
     padding: 0 .5em;
 }
 
-.edit-todo, .delete-todo, .complete-todo {
+.edit-todo, .delete-todo, .complete-todo, .undo-todo {
     cursor: pointer;
 }

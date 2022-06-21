@@ -7,7 +7,12 @@ export function TodoComplete ({completedTodo, undoComplete}) {
             {completedTodo.map(todo => (
                 <div className="single-todo" key={todo.id}>
                     {todo.text}
-                    <div onClick={() => undoComplete(todo.id)}>undo</div>
+                    <div 
+                        className="undo-todo"
+                        onClick={() => undoComplete(todo.id)}
+                    >
+                        undo
+                    </div>
                 </div>
             ))}
         </div> 
