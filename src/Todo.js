@@ -30,7 +30,7 @@ export function Todo({todos, updateTodo, removeTodo, markTodoComplete}) {
                             onClick={() => setEdit({id: todo.id, value: todo.text})} 
                             className="edit-todo"
                         >
-                            +
+                            edit
                         </div>
                         <div 
                             className="delete-todo"
